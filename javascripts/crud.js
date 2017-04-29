@@ -38,9 +38,21 @@ var FbAPI = ((oldCrap) => {
 			// console.log("newTodo", newTodo); object needed is here, 
 			FbAPI.setSingleTodo(newTodo);
 			resolve();
-
 		});
 	};
+
+
+	oldCrap.checker = (id) => {
+		return new Promise ((resolve,reject) => {
+			console.log(id);
+			FbAPI.setChecked(id);
+			resolve();
+		});
+	};
+
+
+
+
 
 	return oldCrap;
 })(FbAPI || {});

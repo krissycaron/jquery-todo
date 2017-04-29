@@ -41,6 +41,7 @@ $(document).ready(function(){
 			$(".new-container").addClass("hide");
 			$(".list-container").removeClass("hide");
 			FbAPI.writeToDom();
+			countTask();
 			//make a new array entry // in the exact same format
 		}).catch(()=> {
 
@@ -50,7 +51,21 @@ $(document).ready(function(){
 
 //delete todo
 //edit todo 
-// complete  todos
+	
+
+	// complete  todos
+	$(".main-container").on('click', 'input[type="checkbox"]', (event)=>{
+		console.log("id",event.target.id);
+		FbAPI.checker(event.target.id).then(() => {
+			FbAPI.writeToDom();
+			countTask();
+		}).catch((error) => {
+			console.log("checker error", error);
+		});
+	});
+
+
+	//counter for items added in todo list 
 	let countTask = () => {
 		let remainingTasks = $("#incomplete-tasks li").length; // jquery gets back and array everytime 
 		$("#counter").hide().fadeIn(300).html(remainingTasks);
