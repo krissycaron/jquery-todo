@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 
 // call augmentor 
-
+//get todo
 	FbAPI.getTodos().then((results)=> {
 		// console.log("results", results);
 		FbAPI.writeToDom();
@@ -23,6 +23,35 @@ $(document).ready(function(){
 	.catch((error)=>{
 		console.log("get todo Errors", error);
 	});
+
+
+// add todo
+//button was hard coded, so you can use .click instead of .on 
+$("#add-todo-button").click(() => {
+	let newTodo = {
+		// id; firebase gives us the id 
+		isCompleted: false,
+		task: $("#add-todo-text").val()
+	};
+	console.log("newTodo", newTodo);
+
+	FbAPI.addTodo(newTodo).then(()=> {
+		$("#add-todo-text").val("");
+		$(".new-container").addClass("hide");
+		$(".list-container").removeClass("hide");
+		FbAPI.writeToDom();
+		//make a new array entry // in the exact same format
+	}).catch(()=> {
+
+	});
+
+});
+
+//delete todo
+//edit todo 
+// complete  todos
+
+
 
 
 });

@@ -12,6 +12,9 @@ var FbAPI =  (() => {
 		},
 		setTodos : (newArray) => {
 			todos = newArray;
+		},
+		setSingleTodo: (newObject) => {
+			todos.push(newObject); 
 		}
 	};
 

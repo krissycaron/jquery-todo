@@ -6,7 +6,7 @@ otherOldCrap.writeToDom = () => {
 	let todos = FbAPI.todoGetter();
 	let doneString = "";
 	let notDoneString = "";
-	console.log("todos in write to dom", todos);
+	// console.log("todos in write to dom", todos);
 
 	todos.forEach((todo) => {
       if (todo.isCompleted) {
