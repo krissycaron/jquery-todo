@@ -17,10 +17,11 @@ $(document).ready(function(){
 // call augmentor 
 
 	FbAPI.getTodos().then((results)=> {
-		console.log("results", results);
+		// console.log("results", results);
+		FbAPI.writeToDom();
 	})
 	.catch((error)=>{
-		console.log("get TOdo Errors", error);
+		console.log("get todo Errors", error);
 	});
 
 

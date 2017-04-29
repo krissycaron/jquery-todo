@@ -8,7 +8,10 @@ var FbAPI =  (() => {
 
 	return {
 		todoGetter : () => {
-			return todo;
+			return todos;
+		},
+		setTodos : (newArray) => {
+			todos = newArray;
 		}
 	};
 

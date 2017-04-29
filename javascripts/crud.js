@@ -4,10 +4,26 @@
 var FbAPI = ((oldCrap) => {
 
 	oldCrap.getTodos = () => {
+		 let items =[]; 
 		return new Promise ((resolve, reject) => {
 			$.ajax("./database/seed.json")
 			.done((data) => {
-				resolve(data);
+				let response = data.items;
+				// loop over each response and call that things "key"
+				Object.keys(response).forEach((key) => {
+					console.log("key", key);
+					//grab the actual object and assign the key inside that object
+					response[key].id = key; // each thin in response will have the 
+					// response [item0] is equal to 
+					// "isCompleted" : false,
+      				// "task" : "feed the dog"
+					//id: "item0"
+					items.push(response[key]);
+					//creating an array and making it how we want to look ()
+				});
+
+				FbAPI.setTodos(items);
+				resolve();
 			})
 			.fail((error)=>{
 				console.log("error", error);
