@@ -1,3 +1,5 @@
+//All the dom handlers are in this iife
+
 var FbAPI =  ((otherOldCrap) => {
 
 

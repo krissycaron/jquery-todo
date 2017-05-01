@@ -50,6 +50,21 @@ $(document).ready(function(){
 	});
 
 //delete todo
+//must be an .on NOT a .click becasue it is a dynamically created button in the write to DOM function.
+	$('.main-container').on('click', '.delete', (event)=> {
+		FbAPI.deleteTodo(event.target.id).then(()=>{
+			FbAPI.writeToDom();
+			countTask();
+		}).catch((error)=>{
+			console.log("error in deleteTodo", error);
+		});
+	});
+
+
+
+
+
+
 //edit todo 
 	
 
