@@ -1,1 +1,101 @@
-console.log("I'm totally working.")
+//main iife 
+
+$(document).ready(function(){
+
+	$("#new-item").click(()=>{
+		$(".list-container").addClass("hide");
+		$(".new-container").removeClass("hide");
+	});
+
+	$("#list-items").click(()=>{
+		$(".new-container").addClass("hide");
+		$(".list-container").removeClass("hide");
+	});
+
+
+
+// call augmentor 
+//get todo
+	FbAPI.getTodos().then((results)=> {
+		// console.log("results", results);
+		FbAPI.writeToDom();
+		countTask();
+	})
+	.catch((error)=>{
+		console.log("get todo Errors", error);
+	});
+
+
+// add todo
+//button was hard coded, so you can use .click instead of .on 
+	$("#add-todo-button").click(() => {
+		let newTodo = {
+			// id; firebase gives us the id 
+			isCompleted: false,
+			task: $("#add-todo-text").val()
+		};
+		console.log("newTodo", newTodo);
+
+		FbAPI.addTodo(newTodo).then(()=> {
+			$("#add-todo-text").val("");
+			$(".new-container").addClass("hide");
+			$(".list-container").removeClass("hide");
+			FbAPI.writeToDom();
+			countTask();
+			//make a new array entry // in the exact same format
+		}).catch(()=> {
+
+		});
+
+	});
+
+//delete todo
+//must be an .on NOT a .click becasue it is a dynamically created button in the write to DOM function.
+	$('.main-container').on('click', '.delete', (event)=> {
+		FbAPI.deleteTodo(event.target.id).then(()=>{
+			FbAPI.writeToDom();
+			countTask();
+		}).catch((error)=>{
+			console.log("error in deleteTodo", error);
+		});
+	});
+
+
+
+
+	//edit todo 
+	// grabs the text, holds it in a empty variable, then deletes and then adds a row to the end of the array.
+	$(".main-container").on('click', '.edit', (event)=>{
+		let editText = $(event.target).closest('.col-xs-4').siblings('.col-xs-8').find('.task').html(); ///up to div over one div then down to class.
+		FbAPI.editTodo(event.target.id).then(()=> {
+			$(".list-container").addClass("hide");
+			$(".new-container").removeClass("hide");
+			$("#add-todo-text").val(editText);
+		}).catch((error) => {
+			console.log("error", error);
+		});
+
+	});
+	
+
+	// complete  todos
+	$(".main-container").on('click', 'input[type="checkbox"]', (event)=>{
+		console.log("id",event.target.id);
+		FbAPI.checker(event.target.id).then(() => {
+			FbAPI.writeToDom();
+			countTask();
+		}).catch((error) => {
+			console.log("checker error", error);
+		});
+	});
+
+
+	//counter for items added in todo list 
+	let countTask = () => {
+		let remainingTasks = $("#incomplete-tasks li").length; // jquery gets back and array everytime 
+		$("#counter").hide().fadeIn(300).html(remainingTasks);
+	};
+
+
+
+});
