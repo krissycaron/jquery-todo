@@ -63,9 +63,19 @@ $(document).ready(function(){
 
 
 
+	//edit todo 
+	// grabs the text, holds it in a empty variable, then deletes and then adds a row to the end of the array.
+	$(".main-container").on('click', '.edit', (event)=>{
+		let editText = $(event.target).closest('.col-xs-4').siblings('.col-xs-8').find('.task').html(); ///up to div over one div then down to class.
+		FbAPI.editTodo(event.target.id).then(()=> {
+			$(".list-container").addClass("hide");
+			$(".new-container").removeClass("hide");
+			$("#add-todo-text").val(editText);
+		}).catch((error) => {
+			console.log("error", error);
+		});
 
-
-//edit todo 
+	});
 	
 
 	// complete  todos
