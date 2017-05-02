@@ -5,27 +5,19 @@
 
 
 var FbAPI =  (() => {
-	let todos =[];
+	let todos = [];
 
 	return {
-		todoGetter : () => {
-			return todos;
-		},
-		setTodos : (newArray) => {
-			todos = newArray;
-		},
-		setSingleTodo: (newObject) => {
-			todos.push(newObject); 
-		},
-		setChecked: (itemId) => {
-			// console.log(itemId);
-			const position = itemId.split("item")[1]; // array ["", 0 ] empty string then the id # we need
-			todos[position].isCompleted = !todos[position].isCompleted; //! not
-		},
-		duhlete: (Id) => {
-			//item1 (the id of the dynamiacally created item)
-			const position = Id.split("item")[1];
-			todos.splice(position, 1);
+		firebaseCredentials : () => {
+			return new Promise((resolve, reject) => {
+				$.ajax("apiKeys.json")
+				.done((data) => {
+					resolve(data);
+				})
+				.fail((error) => {
+					reject(error);
+				});
+			});
 		}
 	};
 
