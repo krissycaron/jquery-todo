@@ -51,7 +51,6 @@ var FbAPI = ((oldCrap) => {
 	};
 
 	oldCrap.addTodo = (apiKeys, newTodo) => {
-		return new Promise ((resolve, reject) => {
 			return new Promise ((resolve, reject) => {
 				$.ajax({
 					method:'POST',
@@ -63,7 +62,6 @@ var FbAPI = ((oldCrap) => {
 					reject("error", error);
 				});
 			});
-		});
 	};
 
 
@@ -81,12 +79,20 @@ var FbAPI = ((oldCrap) => {
 		});
 	};
 
-	oldCrap.editTodo = (apiKeys, newTodo, id) => {
+	oldCrap.editTodo = (apiKeys, editTodo, id) => {
 		return new Promise ((resolve, reject) => {
-			FbAPI.duhlete(id);
-			resolve();
+			$.ajax({
+				method: 'PUT',
+				url:`${apiKeys.databaseURL}/items/${id}.json`,
+				data: JSON.stringify(editTodo)
+			}).done(() => {
+				resolve();
+			}).fail((error) => {
+				reject(error);
+			});
 		});
 	};
+
 
 
 	return oldCrap;

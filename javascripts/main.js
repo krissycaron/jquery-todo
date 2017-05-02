@@ -41,7 +41,7 @@ $(document).ready(function(){
         editId = "";
         $('.new-container').addClass('hide');
         $('.list-container').removeClass('hide');
-        FbAPI.writeDom(apiKeys);
+        FbAPI.writeToDom(apiKeys);
       }).catch((error) => {
         console.log("addTodo error", error);
       });
@@ -50,7 +50,7 @@ $(document).ready(function(){
         $('#add-todo-text').val("");
         $('.new-container').addClass('hide');
         $('.list-container').removeClass('hide');
-        FbAPI.writeDom(apiKeys);
+        FbAPI.writeToDom(apiKeys);
       }).catch((error) => {
         console.log("addTodo error", error);
       });      
