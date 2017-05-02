@@ -81,19 +81,19 @@ $(document).ready(function(){
 		});
 	
 
-	// complete  todos
-	$(".main-container").on('click', 'input[type="checkbox"]', (event)=>{
-		console.log("id",event.target.id);
-		let myTodo = {
-			isCompleted: event.target.checked,
-			task: $(event.target).siblings('.task').html()
-		};
-		FbAPI.checker(apiKeys, myTodo,event.target.id).then(() => {
-			FbAPI.writeToDom(apiKeys);
-		}).catch((error) => {
-			console.log("checker error", error);
-		});
-	});
+	 //complete todos
+  $('.main-container').on('click', 'input[type="checkbox"]', (event)=>{
+  	let myTodo = {
+      isCompleted: event.target.checked,
+      task: $(event.target).siblings('.task').html()
+    };
+    FbAPI.editTodo(apiKeys, myTodo,event.target.id).then(() =>{
+  		FbAPI.writeToDom(apiKeys);
+  	}).catch((error) => {
+  		console.log("checker error", error);
+  	});
+  });
+
 
 
 });
