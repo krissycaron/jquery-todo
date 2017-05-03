@@ -1,16 +1,26 @@
 {
-  "items" : {
-    "item0" : {
-      "isCompleted" : true,
-      "task" : "walk the dog"
+  "items": {
+    "item0": {
+      "isCompleted": true,
+      "task": "walk the dog"
     },
-    "item1" : {
-      "isCompleted" : false,
-      "task" : "feed the dog"
+    "item1": {
+      "isCompleted": false,
+      "task": "feed the dog"
     },
-    "item2" : {
-      "isCompleted" : false,
-      "task" : "take a nap"
+    "item2": {
+      "isCompleted": false,
+      "task": "take a nap"
+    }
+  },
+  "users": {
+    "user0": {
+      "uid": "kn2yBAhmG1gGS7KIp2UhnPYmzce2",
+      "username": "london"
+    },
+    "user1": {
+      "uid": "xiqdaZ11nFYh9NqkVQsbNu9zFwL2",
+      "username": "krissy"
     }
   }
 }
