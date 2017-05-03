@@ -103,7 +103,14 @@ $(document).ready(function(){
 		let user = {email, password}; //es6 notation for when a key and a value are the same "email": emailx
 		
 		FbAPI.registerUser(user).then((response)=>{
-			console.log("register response", response);
+			console.log("register response", response.uid);
+			let newUser = {
+				uid: response.uid,
+				username:username
+				};			
+			FbAPI.addUser(apiKeys, newUser).then((response)=>{
+				console.log("addUser", response);
+			});
 		}).catch((error)=>{
 			console.log("error in registerUser", error);
 		});
