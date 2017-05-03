@@ -118,5 +118,19 @@ $(document).ready(function(){
 
 	});
 
+	$('#loginButton').click(() =>{
+		let email = $('#inputEmail').val();
+		let password = $('#inputPassword').val();
 
+		let user = {email, password};
+
+		FbAPI.loginUser(user).then((response) => {
+			console.log("response", response);
+		}).catch((error) => {
+			console.log("error", error);
+		});
+	});
+
+
+//// end of doc.ready////
 });
