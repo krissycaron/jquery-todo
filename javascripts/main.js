@@ -1,5 +1,4 @@
 //main iife 
-
 $(document).ready(function(){
 	let apiKeys;
 	let editId = "";
@@ -13,8 +12,6 @@ $(document).ready(function(){
 		$(".new-container").addClass("hide");
 		$(".list-container").removeClass("hide");
 	});
-
-
 
 // call augmentor 
 //get todo
@@ -94,6 +91,25 @@ $(document).ready(function(){
   	});
   });
 
+
+/// form click events
+
+	$('#registerButton').click(()=> {
+		console.log("register");
+		let email = $('#inputEmail').val();
+		let password= $('#inputPassword').val();
+		let username = $('#inputUsername').val();
+
+		let user = {email, password}; //es6 notation for when a key and a value are the same "email": emailx
+		
+		FbAPI.registerUser(user).then((response)=>{
+			console.log("register response", response);
+		}).catch((error)=>{
+			console.log("error in registerUser", error);
+		});
+
+
+	});
 
 
 });

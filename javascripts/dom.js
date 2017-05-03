@@ -15,7 +15,7 @@ otherOldCrap.writeToDom = (apiKeys) => {
       let todos = results;
       let doneString = "";
       let notDoneString = "";
-      console.log("todos in writeToDom", todos);
+      // console.log("todos in writeToDom", todos);
 
       todos.forEach((todo) => {
         if (todo.isCompleted) {
