@@ -121,8 +121,6 @@ $(document).ready(function() {
         }).catch((error) => {
             console.log("error in registerUser", error);
         });
-
-
     });
 
     let clearLogin = () => {
