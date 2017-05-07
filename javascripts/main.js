@@ -13,12 +13,9 @@ $(document).ready(function() {
         $(".list-container").removeClass("hide");
     });
 
-    // call augmentor 
-    //get todo
     FbAPI.firebaseCredentials().then((keys) => {
         apiKeys = keys;
         firebase.initializeApp(apiKeys);
-        FbAPI.writeToDom(apiKeys);
     }).catch((error) => {
         console.log("key errors", error);
     });
@@ -153,6 +150,13 @@ $(document).ready(function() {
             console.log("error", error);
         });
     });
+
+    $('#logout-container').on('click', '#logoutButton', () =>{
+        clearLogin();
+        FbAPI.logoutUser();
+        $('#login-container').removeClass('hide');
+        $('.main-container').addClass('hide');
+  });
 
 
     //// end of doc.ready////
