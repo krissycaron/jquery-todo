@@ -22,6 +22,7 @@ var FbAPI = ((oldCrap) => {
 	};
 
 	oldCrap.addTodo = (apiKeys, newTodo) => {
+		newTodo.uid = FbAPI.credentialsCurrentUser().uid;
 			return new Promise ((resolve, reject) => {
 				$.ajax({
 					method:'POST',
@@ -51,6 +52,7 @@ var FbAPI = ((oldCrap) => {
 	};
 
 	oldCrap.editTodo = (apiKeys, editTodo, id) => {
+		editTodo.uid = FbAPI.credentialsCurrentUser().uid;
 		return new Promise ((resolve, reject) => {
 			$.ajax({
 				method: 'PUT',
