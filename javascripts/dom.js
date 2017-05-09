@@ -10,12 +10,11 @@ otherOldCrap.countTask = () => {
     };
 
 
-otherOldCrap.writeToDom = (apiKeys) => {
-    FbAPI.getTodos(apiKeys).then((results) => {
+otherOldCrap.writeToDom = (keys) => {
+    FbAPI.getTodos(keys).then((results) => {
       let todos = results;
       let doneString = "";
       let notDoneString = "";
-      console.log("todos in writeToDom", todos);
 
       todos.forEach((todo) => {
         if (todo.isCompleted) {
@@ -44,11 +43,22 @@ otherOldCrap.writeToDom = (apiKeys) => {
 
       $('#completed-tasks').html(doneString);
       $('#incomplete-tasks').html(notDoneString);
+      
+
       otherOldCrap.countTask();
     }).catch((error) => {
       console.log("writeToDom error", error);
     });
   };
+
+  otherOldCrap.createLogoutButton = (apiKey) => {
+    let uid = FbAPI.credentialsCurrentUser().uid;
+    FbAPI.getUser(apiKey, uid).then((user) => {
+      let logoutButton = `<button class="btn btn-danger" id="logoutButton">LOGOUT ${user.username}</button>`;
+      $('#logout-container').html(logoutButton);
+    });
+  };
+
 
   return otherOldCrap;
 })(FbAPI || {});

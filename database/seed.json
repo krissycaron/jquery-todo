@@ -1,16 +1,29 @@
 {
-  "items" : {
-    "item0" : {
-      "isCompleted" : true,
-      "task" : "walk the dog"
+  "items": {
+    "item0": {
+      "isCompleted": true,
+      "task": "walk the dog",
+      "uid" : "MgxKw0DbsVZIXSLlvSkbQqjVyYz2"
     },
-    "item1" : {
-      "isCompleted" : false,
-      "task" : "feed the dog"
+    "item1": {
+      "isCompleted": false,
+      "task": "feed the dog",
+      "uid" : "MgxKw0DbsVZIXSLlvSkbQqjVyYz2"
     },
-    "item2" : {
-      "isCompleted" : false,
-      "task" : "take a nap"
+    "item2": {
+      "isCompleted": false,
+      "task": "take a nap",
+      "uid" : "MgxKw0DbsVZIXSLlvSkbQqjVyYz2"
+    }
+  },
+  "users": {
+    "user0": {
+      "uid": "MgxKw0DbsVZIXSLlvSkbQqjVyYz2",
+      "username": "london "
+    },
+    "user1": {
+      "uid": "xiqdaZ11nFYh9NqkVQsbNu9zFwL2",
+      "username": "krissy"
     }
   }
 }
